@@ -1,0 +1,12 @@
+{% extends 'thinkapp/master.html' %}
+
+{% block main %}
+    <form role="form"  method="post"  action="">
+    {% csrf_token %}
+         </br></br></br>
+        类型名称:  <input type="text" name="name"> </br>
+      <input type="submit" value="提 交">
+
+    </form>
+{% endblock %}
+

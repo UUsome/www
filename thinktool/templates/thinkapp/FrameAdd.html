@@ -1,0 +1,40 @@
+{% extends 'thinkapp/master.html' %}
+{% load static %} 
+
+{% block main %}
+    <form role="form"  method="post"  action="FrameAdd">
+    {% csrf_token %}
+
+     <div class="input-group mb-3" >
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">类型 ：</label>
+      </div>
+
+        <select name="Sort_id"  value="0" >
+            {% for  c  in  Sort_id %}
+                <option value="{{ c.id }}"> {{ c.name }} </option>
+            {% endfor %}
+        </select> <br>
+    </div>
+
+标题:  <input type="text" name="nameT">  <br>
+        <input id="Num" type="hidden"  name="Num"  value="0">
+        <p id="Frame_id"> </p>
+        <p>添加步骤：<span> <a id="addFrameC" href="javascript:void(0);">添加</a></span> </p>
+        <br>
+        <button  type="submit">提 交</button>
+    </form>
+<!-- 两个script脚本用处,动态添加输入框    -->
+<script src="{% static  'js/jquery-3.3.1.js' %}"></script>
+<script>
+$(function () {
+    var num = 1;
+    $("#addFrameC").click(function () {
+        $("#Frame_id").append("<span>第"+num+"步：</span><span><input name=\"Cname"+num+"\"> <input type=\"radio\" name=\"sub_title"+num+"\" value=\"1\" checked=\"checked\">内容 <input type=\"radio\" value=\"0\" name=\"sub_title"+num+"\" > 子标题 </span><br>");
+        $("#Num").val(num);
+        num += 1;
+    });
+});
+</script>
+
+{% endblock %}

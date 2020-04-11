@@ -1,0 +1,7 @@
+{% extends 'thinkapp/master.html' %}
+{% block main %}
+    {{ frameT.name }} <br><br>
+    {% for fc in frameC %}
+        {{ fc.name }} <br>
+     {% endfor %}
+{% endblock %}

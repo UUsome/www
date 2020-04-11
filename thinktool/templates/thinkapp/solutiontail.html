@@ -1,0 +1,8 @@
+{% extends 'thinkapp/master.html' %}
+{% block main %}
+    {{ frameT.name }}
+    {% for s in solution %}&nbsp;&nbsp;&nbsp;
+       <li> {{ s.name }}  </li>
+    {% endfor %}
+{% endblock %}
+
