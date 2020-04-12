@@ -3,9 +3,9 @@
 {% block main %}
 <table  class="table table-hover table-bordered">
 <tr>
-    <th>类别</th>
+    <th width="10%">类别</th>
     <th>方案</th>
-    <th>操作</th>
+    <th width="20%">  操作</th>
 </tr>
 {% for  t  in  FrameT %}
 <tr>
@@ -16,7 +16,7 @@
     </td>
     <td > {{ t.name }} </td>
     <td class="text-center">
-        <a href="{% url 'SolutionAdd' frameT_id=t.id %}" role="button"> <span class="badge badge-pill">使用 </span></a> &nbsp;
+        <a href="{% url 'SolutionAdd' frameT_id=t.id %}" role="button"> <span class="badge badge-pill">使用 </span></a> &nbsp; &nbsp;
         <a href="{% url 'framedetail' frameT_id=t.id %}" role="button"> <span class="badge badge-pill">查看 </span></a>
     </td>
     {% endfor %}
