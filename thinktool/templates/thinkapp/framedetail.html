@@ -4,4 +4,12 @@
     {% for fc in frameC %}
         {{ fc.name }} <br>
      {% endfor %}
+
+<!-- 分割线 -->
+<hr class="simple" color="#6f5499" />
+
+{% for st in SolutionT %}
+ <li> <a href="{% url 'solutiontail' frameT_id=st.F_id SolutionT_id=st.id %}" role="button"> <span class="badge badge-pill">{{ st.name }} </span></a> </li> &nbsp; &nbsp;
+{% endfor %}
+
 {% endblock %}

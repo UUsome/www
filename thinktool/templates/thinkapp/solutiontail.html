@@ -1,8 +1,11 @@
 {% extends 'thinkapp/master.html' %}
 {% block main %}
     {{ frameT.name }}
+    <!-- 分割线 -->
+    <hr class="simple" color="#6f5499" />
     {% for s in solution %}&nbsp;&nbsp;&nbsp;
-       <li> {{ s.name }}  </li>
+     {{ s.name }}
     {% endfor %}
+
 {% endblock %}
 

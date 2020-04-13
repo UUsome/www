@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views.generic import View
 from .models import Sort_Detail, Frame_title, Frame_content, Solution
+from django.db.models import Q
 
 # Create your views here.
 def testindex(request):
@@ -67,9 +68,11 @@ def frameList(request):
 def framedetail(request,frameT_id):
     frameT = Frame_title.objects.get(pk=frameT_id)
     frameC = Frame_content.objects.filter(Frame_title_id=frameT_id)
+    SolutionT =  Solution.objects.filter(is_title=0).filter(F_id=frameT_id)
     context = {}
     context['frameT'] = frameT
     context['frameC'] = frameC
+    context['SolutionT'] = SolutionT
     return render(request,'thinkapp/framedetail.html', context)
 
 
@@ -85,23 +88,41 @@ class SolutionAdd(View):
         context['frameC'] = frameC
         context['frameCNum'] = frameCNum
         return render(request, 'thinkapp/SolutionAdd.html', context)
+    # def post(self, request,frameT_id):
+    #     frameCNum = request.POST.get("frameCNum")
+    #     for i in range(int(frameCNum)+1):
+    #         V_id = request.POST.get("frameid" + str(i))
+    #         if int(V_id) > -1:
+    #             SolutionI = Solution()
+    #             SolutionI.is_title = request.POST.get("is_title" + str(i))
+    #             SolutionI.F_id = V_id
+    #             SolutionI.name = request.POST.get("solution" + str(i))
+    #             SolutionI.save()
+    #     return redirect(to='frameList')
+    #     # return render(request, 'thinkapp/index.html')
     def post(self, request,frameT_id):
+        SolutionI = Solution()
+        SolutionI.is_title = request.POST.get("is_title0")
+        SolutionI.F_id = request.POST.get("frameid0")
+        SolutionI.name = request.POST.get("solution0")
+        SolutionI.save()
+        st_id = SolutionI.id
         frameCNum = request.POST.get("frameCNum")
-        for i in range(int(frameCNum)+1):
-            V_id = request.POST.get("frameid" + str(i))
+        for i in range(int(frameCNum)):
+            V_id = request.POST.get("frameid" + str(i+1))
             if int(V_id) > -1:
                 SolutionI = Solution()
-                SolutionI.is_title = request.POST.get("is_title" + str(i))
+                SolutionI.is_title =st_id # request.POST.get("is_title" + str(i+1))
                 SolutionI.F_id = V_id
-                SolutionI.name = request.POST.get("solution" + str(i))
+                SolutionI.name = request.POST.get("solution" + str(i+1))
                 SolutionI.save()
         return redirect(to='frameList')
         # return render(request, 'thinkapp/index.html')
 
 # F标题，S标题
-def solutiontail(request,frameT_id):
-    frameT = Frame_title.objects.filter(id=frameT_id)
-    solution = Solution.objects.filter(is_title=1).filter(F_id=frameT_id)
+def solutiontail(request,frameT_id,SolutionT_id):
+    frameT = Frame_title.objects.get(pk=frameT_id)
+    solution = Solution.objects.filter(Q(id=SolutionT_id) | Q(is_title=SolutionT_id))
     context = {}
     context['frameT'] = frameT
     context['solution'] = solution
