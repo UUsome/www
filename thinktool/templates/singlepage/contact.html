@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% load static %} 
+
+{% block main %}
+  <form action="contact" method="POST">
+ {% csrf_token %}
+    <div id="mergeTable" class="mergeTable">
+
+
+        <div class="mergeRow dojoDndItem mergeRow-text" id="mergeRow-0">
+            <label for="title">标题：</label>
+            <div class="field-group">
+                <input type="text" name="title" id="title" size="25" value="">
+            </div>
+        </div>
+
+        <div class="mergeRow dojoDndItem mergeRow-text" id="mergeRow-1">
+            <label for="contact">联系方式</label>
+            <div class="field-group">
+                <input type="text" name="contact" id="contact" size="25" value="">
+            </div>
+        </div>
+
+        <div class="mergeRow dojoDndItem mergeRow-text" id="mergeRow-2">
+            <label for="content">内容</label>
+            <div class="field-group">
+                <input type="text" name="content" id="content" size="25" value="">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="submit_container clear">
+        <input type="submit" class="formEmailButton" name="submit" value="提交">
+    </div>
+
+</form>
+
+{% endblock %}
