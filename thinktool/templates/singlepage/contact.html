@@ -2,11 +2,28 @@
 {% load static %} 
 
 {% block main %}
+<div>
+
+
+
+<p>阁主邮箱：495050243@qq.com</p>
+
+<p>
+<strong>闲论：</strong>有一好友，从学校就比我厉害（就是学习，玩都比我强）。在努力上不觉得比他差哪里。所以就一直想知道为啥。
+现在还在寻找答案的路上。暂时发现一点，那就是思维方式上有点不一样。观察他的行为，发现做事，思考大概感觉上有一定的规范类的方式遵循。
+可以叫做系统，或者模式。也有说套路的。都一个意思。
+所以就搜集一些思路模型，做成一个系统。尝试。
+</p>
+
+可以留言：
+</div>
+
+<!--留言-->
+<div>
+
   <form action="contact" method="POST">
  {% csrf_token %}
     <div id="mergeTable" class="mergeTable">
-
-
         <div class="mergeRow dojoDndItem mergeRow-text" id="mergeRow-0">
             <label for="title">标题：</label>
             <div class="field-group">
@@ -27,7 +44,6 @@
                 <input type="text" name="content" id="content" size="25" value="">
             </div>
         </div>
-
     </div>
 
     <div class="submit_container clear">
@@ -35,5 +51,6 @@
     </div>
 
 </form>
+</div>
 
 {% endblock %}
