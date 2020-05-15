@@ -1,6 +1,31 @@
 {% extends 'layout.html' %}
 
 {% block leftbar %}
+<br>
+<!--框架列表导航-->
+<div style="background:#a0b9c4; color:rgba(229,52,52,0.15)">
+<ul class="nav flex-column">
+
+    <li class="nav-item">
+        <a class="nav-link active" href="{% url 'frameList' %}">全部</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " href="{% url 'frameListsort' sort_id=1 %}">分类</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'frameListsort' sort_id=2 %}">分步</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#" role="button">商业</a>
+    </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" role="button">其它</a>
+    </li>
+</ul>
+    
+</div>
+
+
 
 {% endblock %}
 

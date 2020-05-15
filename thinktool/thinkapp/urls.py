@@ -8,6 +8,7 @@ urlpatterns = [
     path('SortList', views.SortList, name='SortList'),
     path('FrameAdd', views.FrameAdd.as_view(), name='FrameAdd'),
     path('', views.frameList, name='frameList'),
+    path('frameListsort/<int:sort_id>', views.frameListsort, name='frameListsort'),
     path('SolutionAdd/<int:frameT_id>', views.SolutionAdd.as_view(), name='SolutionAdd'),
     path('framedetail/<int:frameT_id>', views.framedetail, name='framedetail'),
     path('solutiontail/<int:frameT_id>/<int:SolutionT_id>', views.solutiontail, name='solutiontail'),

@@ -37,7 +37,7 @@ class Frame_title(models.Model):
 
 
 class Frame_content(models.Model):
-    name = models.CharField(max_length=64,verbose_name='框架分类名称')
+    name = models.CharField(max_length=200,verbose_name='框架分类名称')
     Frame_title = models.ForeignKey(Frame_title, on_delete=models.CASCADE, null=False, verbose_name='标题')
     sub_title = models.IntegerField(default='1', verbose_name='0，子标题没有输入；1，有输入')
     # creater = models.ForeignKey(User, on_delete=models.CASCADE, null=True,verbose_name='用户')
@@ -58,7 +58,7 @@ class Frame_content(models.Model):
 # 3，方案表设计 solution (s_order[第几个方案],frame_id,name,creater,add_time,is_show,remark)
 class Solution(models.Model):
     F_id =  models.IntegerField(default='0',verbose_name='frameid')
-    name = models.CharField(max_length=64,verbose_name='框架')
+    name = models.CharField(max_length=200,verbose_name='框架')
     is_title = models.IntegerField(default='0', verbose_name='0，内容；1，标题')
     creater = models.CharField(max_length=64,verbose_name='创建人')
     is_show = models.IntegerField(default=1,verbose_name='删除字段')

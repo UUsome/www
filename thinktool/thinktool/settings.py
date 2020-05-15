@@ -82,6 +82,17 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'web',
+#         #'HOST': '127.0.0.1',
+#         'USER': 'web',
+#         'PASSWORD': '123.comA',
+#         'PORT': '3306',
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -121,5 +132,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (  #使static目录生效
+#STATIC_ROOT = ( #使static目录生效 线上  https://www.qikqiak.com/post/django-staticroot-staticfilesdirs-function/
     os.path.join(BASE_DIR, 'static'),
 )

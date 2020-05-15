@@ -54,7 +54,7 @@ class FrameAdd(View):
         return  redirect(to='frameList')
 
 
-# 框架列表
+# 框架列表 全部
 def frameList(request):
     FrameT = Frame_title.objects.all()
     FrameSort = Sort_Detail.objects.all()
@@ -62,6 +62,15 @@ def frameList(request):
     context['FrameT'] = FrameT
     context['FrameSort'] = FrameSort
     return render(request,'thinkapp/frameList.html', context)
+
+# 框架列表 按类别
+def frameListsort(request,sort_id):
+    FrameT = Frame_title.objects.filter(Sort_id=sort_id)
+    FrameSort = Sort_Detail.objects.all()
+    context = {}
+    context['FrameT'] = FrameT
+    context['FrameSort'] = FrameSort
+    return render(request,'thinkapp/framelistsort.html', context)
 
 
 # 展示框架下所有方案列表

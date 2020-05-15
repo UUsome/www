@@ -70,11 +70,12 @@ yum install nginx
 pip install uwsgi
 
 
-sudo service nginx restart//启动nginx
+sudo service nginx restart   //启动nginx
 uwsgi --ini hello_uwsgi.ini //初始化uwsgi
 ps -ef | grep uwsgi
+ps -ef | grep nginx
 kill -9 XXXX
-
+python3 manage.py collectstatic
 
 vim /home/webuser/www/thinktool/hello_uwsgi.ini
 ```
@@ -162,3 +163,22 @@ vim /etc/nginx/nginx.conf
 
 http://112.126.61.224:80/
 
+''' mysql 配置
+yum install mariadb-server mariadb
+
+mariadb数据库的相关命令是：
+systemctl start mariadb  #启动MariaDB
+systemctl stop mariadb  #停止MariaDB
+systemctl restart mariadb  #重启MariaDB
+systemctl enable mariadb  #设置开机启动
+
+mysql -u root -proot
+select host,user,password from user;
+update user set password =password('root') ;
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON TUTORIALS.* TO 'zara'@'localhost'  IDENTIFIED BY 'zara123';
+
+CREATE USER 'web'@'%' IDENTIFIED BY '123.comA';
+CREATE DATABASE web;
+GRANT ALL PRIVILEGES ON web.* TO 'web'@'%'  IDENTIFIED BY '123.comA';
+
+'''
