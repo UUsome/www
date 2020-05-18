@@ -2,30 +2,32 @@
 
 {% block main %}
 <form role="form"  method="post"  action="">
+<div class="form-group">
 {% csrf_token %}
 <input  type="hidden"  name="frameCNum"  value="{{ frameCNum }}">
 <br><br>
 {{ frameT }}<br>
 <hr class="simple" color="#6f5499" /> <!-- 分割线 -->
-<strong>主题 ：</strong>
+<input name="solution0" class="form-control form-control-lg" type="text" placeholder="请输入主题：">
 <input type="hidden"  name="is_title0"  value="0">
 <input type="hidden"  name="frameid0"  value="{{ frameT.id }}"> <br>
-<textarea name="solution0" ></textarea><br><br>
     {% for c in frameC %}
         <tr>
-            <th><strong>{{ c.name }}</strong></th>
+
             <td>
                 {% if c.sub_title == 1 %}
-<!--                    <input type="hidden"  name="is_title{{ forloop.counter }}"  value="1">-->
-                    <input type="hidden"  name="frameid{{ forloop.counter }}"  value="{{ c.id }}"> <br>
-                    <textarea name="solution{{ forloop.counter }}" ></textarea>         <br><br>
+                        <label for="exampleFormControlTextarea1">{{ c.name }}</label>
+                        <input type="hidden"  name="frameid{{ forloop.counter }}"  value="{{ c.id }}"> <br>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="solution{{ forloop.counter }}"></textarea>
                 {% else %}
+                <label for="exampleFormControlTextarea1"><strong>{{ c.name }}</strong></label>
                     <input type="hidden"  name="frameid{{ forloop.counter }}"  value="-1"> <br>
                 {% endif %}
             </td>
         </tr>
     {% endfor %}
-<input type="submit" value="提 交">
+<button type="submit" class="btn btn-primary">提交</button>
+</div>
 </form>
 {% endblock %}
 
