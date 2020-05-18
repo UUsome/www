@@ -2,16 +2,22 @@
 {% block main %}
     {{ frameT.name }}
     <hr class="simple" color="#6f5499" />   <!-- 分割线 -->
+<table  class="table table-bordered">
+<tr class="table-success">
+    <th width="28%" scope="col">框架</th>
+    <th>方案</th>
+</tr>
     {% for s in solution %}
     {% if s.is_title == 0 %}
-     <strong>主题 :</strong>  {{ s.name }} </br>
+<tr>  <th >  <strong>主题 </strong>  </th>  <td >  {{ s.name }} </td ></tr>
     {% else %}
         {% for c in frameC %}
             {% if s.F_id == c.id %}
-            <strong> {{ c.name }} </strong> {{ s.name }} </br>
+        <tr>  <th >   <strong> {{ c.name }} </strong> </th>  <td > {{ s.name }} </td > </tr>
             {% endif %}
         {% endfor %}
     {% endif %}
     {% endfor %}
+</table>
 {% endblock %}
 
