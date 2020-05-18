@@ -6,12 +6,14 @@
 <input  type="hidden"  name="frameCNum"  value="{{ frameCNum }}">
 <br><br>
 {{ frameT }}<br>
+<hr class="simple" color="#6f5499" /> <!-- 分割线 -->
+<strong>主题 ：</strong>
 <input type="hidden"  name="is_title0"  value="0">
 <input type="hidden"  name="frameid0"  value="{{ frameT.id }}"> <br>
 <textarea name="solution0" ></textarea><br><br>
     {% for c in frameC %}
         <tr>
-            <th>{{ c.name }}</th>
+            <th><strong>{{ c.name }}</strong></th>
             <td>
                 {% if c.sub_title == 1 %}
 <!--                    <input type="hidden"  name="is_title{{ forloop.counter }}"  value="1">-->
