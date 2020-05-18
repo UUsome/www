@@ -1,16 +1,8 @@
 {% extends 'thinkapp/master.html' %}
 {% block main %}
     {{ frameT.name }}
-<!--{{solution}}-->
     <hr class="simple" color="#6f5499" />   <!-- 分割线 -->
-
-
     {% for s in solution %}
-<!--{{ s.name }}-->
-<!--{{ s.id }}-->
-<!--{{ s.F_id }}-->
-<!--{{ s.is_title }}-->
-
     {% if s.is_title == 0 %}
      <strong>主题 :</strong>  {{ s.name }} </br>
     {% else %}
@@ -19,10 +11,7 @@
             <strong> {{ c.name }} </strong> {{ s.name }} </br>
             {% endif %}
         {% endfor %}
-
     {% endif %}
-
-
     {% endfor %}
 {% endblock %}
 
