@@ -131,9 +131,11 @@ class SolutionAdd(View):
 # F标题，S标题
 def solutiontail(request,frameT_id,SolutionT_id):
     frameT = Frame_title.objects.get(pk=frameT_id)
+    frameC = Frame_content.objects.filter(Frame_title_id=frameT_id)
     solution = Solution.objects.filter(Q(id=SolutionT_id) | Q(is_title=SolutionT_id))
     context = {}
     context['frameT'] = frameT
+    context['frameC'] = frameC
     context['solution'] = solution
     return render(request,'thinkapp/solutiontail.html', context)
 
